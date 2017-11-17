@@ -5,10 +5,11 @@
 
 
 int main(){
+  int ppid = getpid();
   srand(time(NULL));
   printf("Hi! I am the parent! My id is: %d\n", getpid());
   int process = fork();
-  if (getpid() == getppid()){
+  if (getpid() == ppid){
          process = fork();
     }
   if(!(process)){
