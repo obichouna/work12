@@ -8,20 +8,20 @@ int main(){
   int i;
   int status;
   srand(time(NULL));
-  printf("Hi! I am the parent!\n");
+  printf("Hi! I am the parent! My id is: %d\n", getpid());
   int process = fork();
   if (getpid() == getppid()){
-        int process = fork();
+         process = fork();
     }
   if(!(process)){
       printf("\tHi! I am a child with pid: %d\n", getpid());
-      int r = (rand() % 20) + 5;
+      int r = rand() % 20 + 5;
       sleep(r);
       printf("\t I just slept, that was a good nap!\n");
       exit(r);
   }else{
     int child_id = wait(&status);
     printf("My child %d has just slept for %d seconds!\n", child_id, WEXITSTATUS(status));
-    printf("Well, I am done.");
+    printf("Well, I am done.\n");
   }
 }
