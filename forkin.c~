@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <unistd.h>
+
+
+int main(){
+  srand(time(NULL));
+  printf("Hi! I am the parent!");
+  int f = fork();
+  fork();
+
+  if(!f){
+    printf("\tHi! I am a child with pid: %d\n", getpid());
+
+  }
+
+
+}
