@@ -5,8 +5,6 @@
 
 
 int main(){
-  int i;
-  int status;
   srand(time(NULL));
   printf("Hi! I am the parent! My id is: %d\n", getpid());
   int process = fork();
@@ -20,8 +18,9 @@ int main(){
       printf("\t I just slept, that was a good nap!\n");
       exit(r);
   }else{
+    int status;
     int child_id = wait(&status);
     printf("My child %d has just slept for %d seconds!\n", child_id, WEXITSTATUS(status));
-    printf("Well, I am done.\n");
+    printf("Parent is done.\n");
   }
 }
