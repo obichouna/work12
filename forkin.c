@@ -5,24 +5,23 @@
 
 
 int main(){
-  int pids[2];
   int i;
+  int status;
   srand(time(NULL));
   printf("Hi! I am the parent!\n");
-
-  for(i = 0; i < 2; i++){
-    pids[i] = fork();
-    if(!(pids[i]))){
+  int process = fork();
+  if (getpid() == getppid()){
+        int process = fork();
+    }
+  if(!(process)){
       printf("\tHi! I am a child with pid: %d\n", getpid());
       int r = (rand() % 20) + 5;
       sleep(r);
       printf("\t I just slept, that was a good nap!\n");
-      exit(0);
-    }
+      exit(r);
+  }else{
+    int child_id = wait(&status);
+    printf("My child %d has just slept for %d seconds!\n", child_id, WEXITSTATUS(status));
+    printf("Well, I am done.");
   }
-  
-  int status;
-  int pid;
-  while(n
-
 }
