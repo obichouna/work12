@@ -12,9 +12,10 @@ int main(){
   if (getpid() == ppid){
          process = fork();
     }
+  srand(getpid);
   if(!(process)){
       printf("\tHi! I am a child with pid: %d\n", getpid());
-      int r = rand() % 20 + 5;
+      int r = rand() % 16 + 5;
       sleep(r);
       printf("\t I just slept, that was a good nap!\n");
       exit(r);
